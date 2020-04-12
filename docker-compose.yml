@@ -1,7 +1,8 @@
 version: '2'
 services:
   statusok:
-    image: wildsurfer/statusok
+    image: umids/statusok
+    # image: wildsurfer/statusok
     volumes:
       - ./config:/config
     depends_on:
