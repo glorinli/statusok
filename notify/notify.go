@@ -154,9 +154,9 @@ func isEmptyObject(objectString string) bool {
 //A readable message string from responseTimeNotification
 func getMessageFromResponseTimeNotification(responseTimeNotification ResponseTimeNotification) string {
 
-	message := fmt.Sprintf("Notification from StatusOK :bell:\n\nOne of your apis response time is below than expected."+
+	message := fmt.Sprintf("Notification from StatusOK\n\nOne of your apis response time is below than expected."+
 		"\n\nPlease find the Details below"+
-		"\n\nUrl: %v \nRequestType: %v \nCurrent Average Response Time: %v ms\nExpected Response Time: %v ms\n"+
+		"\n\nURL: %v \nRequestType: %v \nCurrent Average Response Time: %v ms\nExpected Response Time: %v ms\n"+
 		"\n\nThanks", responseTimeNotification.Url, responseTimeNotification.RequestType, responseTimeNotification.MeanResponseTime, responseTimeNotification.ExpectedResponsetime)
 
 	return message
@@ -165,9 +165,9 @@ func getMessageFromResponseTimeNotification(responseTimeNotification ResponseTim
 //A readable message string from errorNotification
 func getMessageFromErrorNotification(errorNotification ErrorNotification) string {
 
-	message := fmt.Sprintf("Notification from StatusOK :bell:\n\nWe are getting error when we try to send request to one of your apis"+
+	message := fmt.Sprintf("Notification from StatusOK\n\nWe are getting error when we try to send request to one of your apis"+
 		"\n\nPlease find the Details below"+
-		"\n\nUrl: %v \nRequestType: %v \nError Message: %v \nResponse Body: %v\nOther Info:%v\n"+
+		"\n\nURL: %v \nRequestType: %v \nError Message: %v \nResponse Body: %v\nOther Info:%v\n"+
 		"\n\nThanks", errorNotification.Url, errorNotification.RequestType, errorNotification.Error, errorNotification.ResponseBody, errorNotification.OtherInfo)
 
 	return message
