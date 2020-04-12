@@ -60,7 +60,7 @@ func (slackNotify SlackNotify) SendResponseTimeNotification(responseTimeNotifica
 	defer getResponse.Body.Close()
 
 	if getResponse.StatusCode != http.StatusOK {
-		return errors.New("Slack : Send notifaction failed. Response code " + strconv.Itoa(getResponse.StatusCode))
+		return errors.New("Slack : Sending notification failed. Response code " + strconv.Itoa(getResponse.StatusCode))
 	}
 
 	return nil
@@ -85,7 +85,7 @@ func (slackNotify SlackNotify) SendErrorNotification(errorNotification ErrorNoti
 	defer getResponse.Body.Close()
 
 	if getResponse.StatusCode != http.StatusOK {
-		return errors.New("Slack : Send notifaction failed. Response code " + strconv.Itoa(getResponse.StatusCode))
+		return errors.New("Slack : Sending notification failed. Response code " + strconv.Itoa(getResponse.StatusCode))
 	}
 
 	return nil
