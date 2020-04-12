@@ -140,34 +140,18 @@ docker run -d -v /path/to/config/folder:/config sanathp/statusok
 
 ## Running with Docker Compose
 
-Prepare docker-compose.yml config like this:
-
-```
-version: '2'
-services:
-  statusok:
-    build: sanathp/statusok
-    volumes:
-      - /path/to/config/folder:/config
-    depends_on:
-      - influxdb
-  influxdb:
-    image: tutum/influxdb:0.9
-    environment:
-      - PRE_CREATE_DB="statusok" 
-    ports:
-      - 8083:8083 
-      - 8086:8086
-  grafana:
-    image: grafana/grafana
-    ports:
-      - 3000:3000
-```
+Change the `config.json` file in the `config/` folder.
 
 Now run it:
 
 ```
-docker-compose up
+docker-compose up -d
+```
+
+Stop all services:
+
+```bash
+docker-compose down
 ```
 
 ## Contribution
