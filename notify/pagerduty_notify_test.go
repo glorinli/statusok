@@ -45,7 +45,7 @@ func TestInvalidSendResponseTimeNotification(t *testing.T) {
 func TestSendErrorNotification(t *testing.T) {
 	pagerdutyNotify := PagerdutyNotify{"https://events.pagerduty.com/v2/enqueue", "abcdefghijklmnopqrstuvwxyz123456", "info"}
 
-	err := pagerdutyNotify.SendErrorNotification(ErrorNotification{"http://test.com", "GET", "This is test notification", "Test notiification", "test"})
+	err := pagerdutyNotify.SendErrorNotification(ErrorNotification{"http://test.com", "GET", "This is a test notification", "Test notification", "test"})
 
 	if err != nil {
 		t.Error(err)
