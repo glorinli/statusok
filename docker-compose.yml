@@ -9,6 +9,7 @@ services:
       - influxdb
     networks:
       - network
+    restart: unless-stopped
   influxdb:
     image: tutum/influxdb:0.9
     environment:
@@ -18,6 +19,7 @@ services:
       - 8086:8086
     networks:
       - network
+    restart: unless-stopped
   grafana:
     image: grafana/grafana
     # Deploy using jwilder nginx proxy
@@ -26,6 +28,7 @@ services:
     # - VIRTUAL_PORT=3000
     networks:
       - network
+    restart: unless-stopped
 
 networks:
   network:
