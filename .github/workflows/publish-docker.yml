@@ -7,9 +7,6 @@ env:
   IMAGE_NAME: statusok
 on:
   workflow_dispatch:
-  # schedule:
-  #   - cron: '0 3 * * 1'
-    # Run at 03:00 on Monday to update to latest jupyter/docker-stack
   push:
     # Publish `master` branch as Docker `latest` image.
     branches:

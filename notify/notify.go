@@ -119,7 +119,7 @@ func SendTestNotification() {
 			println("Sent Test Response Time notification to ", value.GetClientName(), ". Make sure you received it")
 		}
 
-		err1 := value.SendErrorNotification(ErrorNotification{"http://test.com", "GET", "This is test notification", "Test notification", "test"})
+		err1 := value.SendErrorNotification(ErrorNotification{"http://test.com", "GET", "This is a test notification, StatusOK has been started successfully.", "Test notification", "test"})
 
 		if err1 != nil {
 			println("Failed to Send Error notification to ", value.GetClientName(), " Please check the details entered in the config file")
@@ -154,10 +154,9 @@ func isEmptyObject(objectString string) bool {
 //A readable message string from responseTimeNotification
 func getMessageFromResponseTimeNotification(responseTimeNotification ResponseTimeNotification) string {
 
-	message := fmt.Sprintf("Notification from StatusOK\n\nOne of your apis response time is below than expected."+
-		"\n\nPlease find the Details below"+
-		"\n\nURL: %v \nRequestType: %v \nCurrent Average Response Time: %v ms\nExpected Response Time: %v ms\n"+
-		"\n\nThanks", responseTimeNotification.Url, responseTimeNotification.RequestType, responseTimeNotification.MeanResponseTime, responseTimeNotification.ExpectedResponsetime)
+	message := fmt.Sprintf("[StatusOK] 🔽 Response time %vms below than expected (%vms)"+
+		"\n%v: %v",
+		responseTimeNotification.MeanResponseTime, responseTimeNotification.ExpectedResponsetime, responseTimeNotification.RequestType, responseTimeNotification.Url)
 
 	return message
 }
@@ -165,10 +164,9 @@ func getMessageFromResponseTimeNotification(responseTimeNotification ResponseTim
 //A readable message string from errorNotification
 func getMessageFromErrorNotification(errorNotification ErrorNotification) string {
 
-	message := fmt.Sprintf("Notification from StatusOK\n\nWe are getting error when we try to send request to one of your apis"+
-		"\n\nPlease find the Details below"+
-		"\n\nURL: %v \nRequestType: %v \nError Message: %v \nResponse Body: %v\nOther Info:%v\n"+
-		"\n\nThanks", errorNotification.Url, errorNotification.RequestType, errorNotification.Error, errorNotification.ResponseBody, errorNotification.OtherInfo)
+	message := fmt.Sprintf("[StatusOK] ❌ Website down:"+
+		"\n%v: %v \nError Message: %v \nResponse Body: %v\nOther Info:%v\n",
+		errorNotification.RequestType, errorNotification.Url, errorNotification.Error, errorNotification.ResponseBody, errorNotification.OtherInfo)
 
 	return message
 }

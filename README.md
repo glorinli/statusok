@@ -2,6 +2,16 @@
 
 Monitor your Website and APIs from your computer.Get notified through Slack or E-mail when your server is down or response time is more than expected.
 
+## Fork informations
+
+This fork from [sanathp/statusok](https://github.com/sanathp/statusok) brings those changes:
+
+* Shorter and straight to the point error messages (aiming for better readability in chat channels such as Slack)
+* Simplify the `Dockerfile` to build from source code (instead of building from a downloaded zip file)
+* Add `docker-compose.yml` file to easily deploy the stack
+* Add a GitHub Actions workflow to publish an image to [`ghcr.io/vemonet/statusok`](https://github.com/vemonet/statusok/pkgs/container/statusok)
+
+[![Publish StatusOK image](https://github.com/vemonet/statusok/actions/workflows/publish-docker.yml/badge.svg)](https://github.com/vemonet/statusok/actions/workflows/publish-docker.yml)
 
 ## Simple Version
 

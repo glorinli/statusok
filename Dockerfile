@@ -10,6 +10,5 @@ WORKDIR /app
 RUN go build
 RUN go install
 
+VOLUME /config
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
-# ENTRYPOINT ["main"]
-# CMD ["--config", "/config/config.json"]

@@ -1,8 +1,7 @@
 version: '2'
 services:
   statusok:
-    image: umids/statusok
-    # image: wildsurfer/statusok
+    image: ghcr.io/vemonet/statusok:latest
     volumes:
       - ./config:/config
     depends_on:
