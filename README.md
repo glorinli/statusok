@@ -1,12 +1,12 @@
 # StatusOK
 
-Monitor your Website and APIs from your computer.Get notified through Slack or E-mail when your server is down or response time is more than expected.
+Monitor your Website and APIs from your computer. Get notified through Slack or E-mail when your server is down or response time is more than expected.
 
 ## Fork informations
 
 This fork from [sanathp/statusok](https://github.com/sanathp/statusok) brings those changes:
 
-* Shorter and straight to the point error messages (aiming for better readability in chat channels such as Slack)
+* Shorter and straight to the point error messages, aiming for better readability in chat channels such as Slack
 * Simplify the `Dockerfile` to build from source code (instead of building from a downloaded zip file)
 * Add `docker-compose.yml` file to easily deploy the stack
 * Add a GitHub Actions workflow to publish an image to [`ghcr.io/vemonet/statusok`](https://github.com/vemonet/statusok/pkgs/container/statusok)
@@ -18,7 +18,7 @@ This fork from [sanathp/statusok](https://github.com/sanathp/statusok) brings th
 Simple Setup to monitor your website and recieve a notification to your Gmail when your website is down.
 
 Step 1: Write a config.json with the url information 
-```
+```json
 {
 	"notifications":{
 		"mail":{
@@ -43,20 +43,20 @@ Step 1: Write a config.json with the url information
 Turn on access for your gmail https://www.google.com/settings/security/lesssecureapps .
 
 Step 2: Download bin file from [here](https://github.com/sanathp/statusok/releases/) and run the below command from your terminal
-```
-$ ./statusok --config config.json
+```bash
+./statusok --config config.json
 ```
 Thats it !!!! You will receive a mail when your website is down or response time is more.
 
 To run as background process add & at the end
 
-```
-$ ./statusok --config config.json &	
+```bash
+./statusok --config config.json &	
 ```
 to stop the process 
-```
-$ jobs
-$ kill %jobnumber
+```bash
+jobs
+kill %jobnumber
 ```
 
 ## Complete Version using InfluxDb
@@ -118,8 +118,8 @@ With StatusOk you can monitor all your REST APIs by adding api details to config
 
 To run the app
 
-```
-$ ./statusok --config config.json &
+```bash
+./statusok --config config.json &
 ```
 
 ## Database
@@ -142,7 +142,7 @@ Adding support to other clients is simple.[view details](https://github.com/sana
 
 ## Running with plain Docker
 
-```
+```bash
 docker run -d -v /path/to/config/folder:/config sanathp/statusok
 ```
 
@@ -154,7 +154,7 @@ Change the `config.json` file in the `config/` folder.
 
 Now run it:
 
-```
+```bash
 docker-compose up -d
 ```
 
