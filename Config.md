@@ -3,7 +3,7 @@
 Config file should be in JSON format (Support for other formats will be added in future).
 
 ## Pattern
-```
+```json
 {
 "notifications":{
 	//notification clients to send notifications
@@ -125,21 +125,20 @@ Notifications will be triggered when mean response time is below given response 
 
 ### Slack
 
-To recieve notifications to your Slack Channel,add below block to your config file with your slack details
+To receive notifications to your Slack Channel, add below block to your config file with your slack details
 
-```
+```json
 "slack":{
 	"channel":"#ChannelName",
 	"username":"your user name",
 	"channelWebhookURL":"slack webhook Url"
 }
-
 ```
 
 ### E-Mail
-To recieve notifications to your email using smtp server,add below block to your config file with your smtp server details.
+To receive notifications to your email using smtp server, add below block to your config file with your smtp server details.
 
-```
+```json
 "mail":{
 	"smtpHost":"smtp host name",
 	"port":port-no,
@@ -148,13 +147,12 @@ To recieve notifications to your email using smtp server,add below block to your
 	"from":"from email id",
 	"to":"to email id"
 }
-
 ```
 ### Mailgun
 
-To recieve notifications to your email Using Mailgun add below block to your config file with your mailgun details.
+To receive notifications to your email Using Mailgun add below block to your config file with your mailgun details.
 
-```
+```json
 "mailGun":{
 	"email":"your email id",
 	"apiKey":"your api key",
@@ -163,9 +161,9 @@ To recieve notifications to your email Using Mailgun add below block to your con
 }
 ```
 ### Http EndPoint
-To recieve notifications to any http Endpoint add below block to your config file with request details. Notification will be sent as a value to parameter "message".
+To receive notifications to any http Endpoint add below block to your config file with request details. Notification will be sent as a value to parameter "message".
 
-```
+```json
 "httpEndPoint":{
 	"url":"http://mywebsite.com",
 	"requestType":"POST",
@@ -174,11 +172,11 @@ To recieve notifications to any http Endpoint add below block to your config fil
 		"Content-Type":"application/json"
 	}
 }
-```	
-### Dingding
-To recieve notifications to any Dingding add below block to your config file with request details.
-
 ```
+### Dingding
+To receive notifications to any Dingding add below block to your config file with request details.
+
+```json
 "dingding":{
         "url": "https://oapi.dingtalk.com/robot/send?access_token=3d21b0b12499ab54e74805",
         "requestType":"POST",
@@ -202,7 +200,7 @@ SendErrorNotification(notification ErrorNotification) error
 If you have written a new notification client which is useful to others, feel free to create a pull request.
 
 ## Database
- 
+
 Save Requests response time information and error information to your database by adding database details to config file. Currently only Influxdb 0.9.3+ is supported.[Add support to your database](https://github.com/sanathp/statusok/blob/master/Config.md#save-data-to-any-other-database)
 
 ### Influx Db 0.9.3+
@@ -218,7 +216,7 @@ More Details : https://influxdb.com/docs/v0.9/introduction/installation.html
 ```
 Default username,password is empty and port number is 8086.Add influxDb details as below inside database parameter to your config file.
 
-```
+```json
 "influxDb":{
 	"host":"localhost",
 	"port":8086,
@@ -232,13 +230,12 @@ To visualize data in influxdb you need to install grafana.
 
 Run below commands to install grafana.
 
-```
+```bash
  wget https://grafanarel.s3.amazonaws.com/builds/grafana_2.1.3_amd64.deb
  apt-get update
  apt-get install -y adduser libfontconfig
  dpkg -i grafana_2.1.3_amd64.deb
  service grafana-server start
-
 ```
 Graphana will be running on port 3000 (http://localhost:3000)
 
@@ -261,9 +258,9 @@ If you have written structs to support any new database, feel free to create a p
 
 ## Logs
 
-By defualt logs are written to stdout in json format.If you want logs to be written to a file,give file path as mentioned below
+By default logs are written to stdout in json format. If you want logs to be written to a file, give file path as mentioned below
 
 
-```
-$ statusok --config config.json --log logfilepath.log
+```bash
+statusok --config config.json --log logfilepath.log
 ```
