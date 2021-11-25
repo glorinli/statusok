@@ -14,8 +14,6 @@ import (
 	"time"
 )
 
-// 	"github.com/sanathp/statusok/database"
-
 var (
 	RequestsList   []RequestConfig
 	requestChannel chan RequestConfig

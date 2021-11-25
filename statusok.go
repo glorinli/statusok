@@ -15,10 +15,6 @@ import (
 	"time"
 )
 
-	// "github.com/sanathp/statusok/database"
-	// "github.com/sanathp/statusok/notify"
-	// "github.com/sanathp/statusok/requests"
-
 type configParser struct {
 	NotifyWhen    NotifyWhen               `json:"notifyWhen"`
 	Requests      []requests.RequestConfig `json:"requests"`
