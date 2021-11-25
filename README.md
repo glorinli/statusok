@@ -6,7 +6,8 @@ Monitor your Website and APIs from your computer. Get notified through Slack or 
 
 This fork from [sanathp/statusok](https://github.com/sanathp/statusok) brings those changes:
 
-* Shorter and straight to the point error messages, aiming for better readability in chat channels such as Slack
+* Shorter notifications, aiming for better readability in chat channels such as Slack
+* Upgrade from Go 1.11 to 1.17 (add `go.mod`)
 * Simplify the `Dockerfile` to build from source code (instead of building from a downloaded zip file)
 * Add `docker-compose.yml` file to easily deploy the stack
 * Add a GitHub Actions workflow to publish an image to [`ghcr.io/vemonet/statusok`](https://github.com/vemonet/statusok/pkgs/container/statusok)
@@ -17,7 +18,7 @@ This fork from [sanathp/statusok](https://github.com/sanathp/statusok) brings th
 
 Simple Setup to monitor your website and recieve a notification to your Gmail when your website is down.
 
-Step 1: Write a config.json with the url information 
+Step 1: Write a `config.json` with the url information 
 ```json
 {
 	"notifications":{
@@ -42,7 +43,7 @@ Step 1: Write a config.json with the url information
 ```
 Turn on access for your gmail https://www.google.com/settings/security/lesssecureapps .
 
-Step 2: Download bin file from [here](https://github.com/sanathp/statusok/releases/) and run the below command from your terminal
+Step 2: Download bin file from [here](https://github.com/vemonet/statusok/releases/) and run the below command from your terminal
 ```bash
 ./statusok --config config.json
 ```
@@ -61,11 +62,11 @@ kill %jobnumber
 
 ## Complete Version using InfluxDb
 
-![alt text](https://github.com/sanathp/StatusOK/raw/master/screenshots/graphana.png "Graphana Screenshot")
+![alt text](https://github.com/vemonet/statusok/raw/master/screenshots/graphana.png "Graphana Screenshot")
 
 You can save data to influx db and view response times over a period of time as above using graphana.
 
-[Guide to install influxdb and grafana](https://github.com/sanathp/statusok/blob/master/Config.md#database) 
+[Guide to install influxdb and grafana](https://github.com/vemonet/statusok/blob/master/Config.md#database) 
 
 With StatusOk you can monitor all your REST APIs by adding api details to config file as below.A Notification will be triggered when you api is down or response time is more than expected.
 
@@ -112,9 +113,9 @@ With StatusOk you can monitor all your REST APIs by adding api details to config
 }
 
 ```
-[Guide to write config.json file](https://github.com/sanathp/statusok/blob/master/Config.md#writing-a-config-file)
+[Guide to write config.json file](https://github.com/vemonet/statusok/blob/master/Config.md#writing-a-config-file)
 
-[Sample config.json file](https://github.com/sanathp/StatusOK/blob/master/sample_config.json)
+[Sample config.json file](https://github.com/vemonet/statusok/blob/master/sample_config.json)
 
 To run the app
 
@@ -126,19 +127,19 @@ To run the app
 
 Save Requests response time information and error information to your database by adding database details to config file. Currently only Influxdb 0.9.3+ is supported.
 
-You can also add data to your own database.[view details](https://github.com/sanathp/statusok/blob/master/Config.md#save-data-to-any-other-database)
+You can also add data to your own database.[view details](https://github.com/vemonet/statusok/blob/master/Config.md#save-data-to-any-other-database)
 
 ## Notifications
 
-Notifications will be triggered when mean response time is below given response time for a request or when an error is occured . Currently the below clients are supported to receive notifications.For more information on setup [click here](https://github.com/sanathp/statusok/blob/master/Config.md#notifications)
+Notifications will be triggered when mean response time is below given response time for a request or when an error is occured . Currently the below clients are supported to receive notifications.For more information on setup [click here](https://github.com/vemonet/statusok/blob/master/Config.md#notifications)
 
-1. [Slack](https://github.com/sanathp/statusok/blob/master/Config.md#slack)
-2. [Smtp Email](https://github.com/sanathp/statusok/blob/master/Config.md#e-mail)
-3. [Mailgun](https://github.com/sanathp/statusok/blob/master/Config.md#mailgun)
-4. [Http EndPoint](https://github.com/sanathp/statusok/blob/master/Config.md#http-endpoint)
-5. [Dingding](https://github.com/sanathp/statusok/blob/master/Config.md#dingding)
+1. [Slack](https://github.com/vemonet/statusok/blob/master/Config.md#slack)
+2. [Smtp Email](https://github.com/vemonet/statusok/blob/master/Config.md#e-mail)
+3. [Mailgun](https://github.com/vemonet/statusok/blob/master/Config.md#mailgun)
+4. [Http EndPoint](https://github.com/vemonet/statusok/blob/master/Config.md#http-endpoint)
+5. [Dingding](https://github.com/vemonet/statusok/blob/master/Config.md#dingding)
 
-Adding support to other clients is simple.[view details](https://github.com/sanathp/statusok/blob/master/Config.md#write-your-own-notification-client)
+Adding support to other clients is simple: [view details](https://github.com/vemonet/statusok/blob/master/Config.md#write-your-own-notification-client)
 
 ## Running with plain Docker
 
@@ -146,7 +147,7 @@ Adding support to other clients is simple.[view details](https://github.com/sana
 docker run -d -v /path/to/config/folder:/config sanathp/statusok
 ```
 
-*Note*: Config folder should contain config file with name `config.json`
+> Config folder should contain config file with name `config.json`
 
 ## Running with Docker Compose
 

@@ -119,7 +119,7 @@ func SendTestNotification() {
 			println("Sent Test Response Time notification to ", value.GetClientName(), ". Make sure you received it")
 		}
 
-		err1 := value.SendErrorNotification(ErrorNotification{"http://test.com", "GET", "This is a test notification, StatusOK has been started successfully.", "Test notification", "test"})
+		err1 := value.SendErrorNotification(ErrorNotification{"http://test.com", "GET", "This is a test notification", "StatusOK has been started successfully ✔️", "test"})
 
 		if err1 != nil {
 			println("Failed to Send Error notification to ", value.GetClientName(), " Please check the details entered in the config file")
