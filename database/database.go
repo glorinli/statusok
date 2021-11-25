@@ -7,10 +7,11 @@ import (
 	"reflect"
 	"strings"
 
+	"github.com/sirupsen/logrus"
 	"github.com/vemonet/statusok/notify"
-
-	"github.com/Sirupsen/logrus"
 )
+
+// 	"github.com/sanathp/statusok/notify"
 
 var (
 	MeanResponseCount = 5 //Default number of response times to calcuate mean response time

@@ -5,15 +5,16 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/vemonet/statusok/database"
 	"io"
 	"net/http"
 	"net/url"
 	"os"
 	"strconv"
 	"time"
-
-	"github.com/vemonet/statusok/database"
 )
+
+// 	"github.com/sanathp/statusok/database"
 
 var (
 	RequestsList   []RequestConfig

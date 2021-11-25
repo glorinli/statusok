@@ -3,19 +3,21 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/codegangsta/cli"
+	"github.com/vemonet/statusok/database"
+	"github.com/vemonet/statusok/notify"
+	"github.com/vemonet/statusok/requests"
 	"io"
 	"math/rand"
 	"net/http"
 	"os"
 	"strconv"
 	"time"
-
-	"github.com/vemonet/statusok/database"
-	"github.com/vemonet/statusok/notify"
-	"github.com/vemonet/statusok/requests"
-
-	"github.com/urfave/cli"
 )
+
+	// "github.com/sanathp/statusok/database"
+	// "github.com/sanathp/statusok/notify"
+	// "github.com/sanathp/statusok/requests"
 
 type configParser struct {
 	NotifyWhen    NotifyWhen               `json:"notifyWhen"`
