@@ -3,32 +3,34 @@ services:
   statusok:
     # image: ghcr.io/vemonet/statusok:latest
     build: .
+    # restart: unless-stopped
     volumes:
       - ./config:/config
     # depends_on:
     #   - influxdb
     networks:
       - network
+    # entrypoint: tail -f /dev/null
+
+  influxdb:
+    image: tutum/influxdb:0.9
+    environment:
+      - PRE_CREATE_DB="statusok" 
+    ports:
+      - 8083:8083 
+      - 8086:8086
+    networks:
+      - network
     restart: unless-stopped
-  # influxdb:
-  #   image: tutum/influxdb:0.9
-  #   environment:
-  #     - PRE_CREATE_DB="statusok" 
-  #   ports:
-  #     - 8083:8083 
-  #     - 8086:8086
-  #   networks:
-  #     - network
-  #   restart: unless-stopped
-  # grafana:
-  #   image: grafana/grafana
-  #   # Deploy using jwilder nginx proxy
-  #   # environment:
-  #   # - VIRTUAL_HOST=statusok.137.120.31.101.nip.io 
-  #   # - VIRTUAL_PORT=3000
-  #   networks:
-  #     - network
-  #   restart: unless-stopped
+  grafana:
+    image: grafana/grafana
+    # Deploy using jwilder nginx proxy
+    # environment:
+    # - VIRTUAL_HOST=statusok.137.120.31.101.nip.io 
+    # - VIRTUAL_PORT=3000
+    networks:
+      - network
+    restart: unless-stopped
 
 networks:
   network:
