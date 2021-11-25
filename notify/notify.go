@@ -154,9 +154,9 @@ func isEmptyObject(objectString string) bool {
 //A readable message string from responseTimeNotification
 func getMessageFromResponseTimeNotification(responseTimeNotification ResponseTimeNotification) string {
 
-	message := fmt.Sprintf("[StatusOK] 🔽 Response time %vms below than expected (%vms)"+
-		"\n%v: %v",
-		responseTimeNotification.MeanResponseTime, responseTimeNotification.ExpectedResponsetime, responseTimeNotification.RequestType, responseTimeNotification.Url)
+	message := fmt.Sprintf("🔽 Response time %vms is below than expected (%vms) for "+
+		"%v (%v)",
+		responseTimeNotification.MeanResponseTime, responseTimeNotification.ExpectedResponsetime, responseTimeNotification.Url, responseTimeNotification.RequestType)
 
 	return message
 }
@@ -164,9 +164,9 @@ func getMessageFromResponseTimeNotification(responseTimeNotification ResponseTim
 //A readable message string from errorNotification
 func getMessageFromErrorNotification(errorNotification ErrorNotification) string {
 
-	message := fmt.Sprintf("[StatusOK] ❌ Website down:"+
-		"\n%v: %v \nError Message: %v \nResponse Body: %v\nOther Info:%v\n",
-		errorNotification.RequestType, errorNotification.Url, errorNotification.Error, errorNotification.ResponseBody, errorNotification.OtherInfo)
+	message := fmt.Sprintf("❌ Website down: "+
+		"%v (%v) \nError Message: %v \nResponse Body: %v\nOther Info:%v\n",
+		errorNotification.Url, errorNotification.RequestType, errorNotification.Error, errorNotification.ResponseBody, errorNotification.OtherInfo)
 
 	return message
 }
