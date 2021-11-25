@@ -8,8 +8,12 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/influxdata/influxdb1-client/v2"
+	"github.com/orourkedd/influxdb1-client/client"
 )
+// https://github.com/influxdata/influxdb1-client/issues/5
+// "github.com/orourkedd/influxdb1-client/client"
+// "github.com/influxdata/influxdb1-client/v2"
+
 // "github.com/influxdata/influxdb/client/v2"
 
 type InfluxDb struct {

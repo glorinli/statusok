@@ -111,7 +111,7 @@ func RequestsInit(data []RequestConfig, concurrency int) {
 		if reqErr != nil {
 			//Request Failed
 			println("\nFailed !!!! Not able to perfome below request")
-			println("\n----Request Deatails---")
+			println("\n----Request Details---")
 			println("Url :", requestConfig.Url)
 			println("Type :", requestConfig.RequestType)
 			println("Error Reason :", reqErr.Error())
