@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/codegangsta/cli"
+	"github.com/urfave/cli"
 	"github.com/vemonet/statusok/database"
 	"github.com/vemonet/statusok/notify"
 	"github.com/vemonet/statusok/requests"
