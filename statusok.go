@@ -104,8 +104,22 @@ func startMonitoring(configFileName string, logFileName string) {
 	database.AddNew(config.Database)
 	database.Initialize(ids, config.NotifyWhen.MeanResponseCount, config.NotifyWhen.ErrorCount)
 
+	for {
+		initSuccess, requestConfig := requests.RequestsInit(reqs, config.Concurrency)
+		if initSuccess {
+			break
+		} else {
+			notify.SendErrorNotification(notify.ErrorNotification{
+				Url: requestConfig.Url,
+				RequestType: requestConfig.RequestType,
+				ResponseBody: "Error, one of the given URL could not be reached.",
+				Error: "The website is probably down, make sure all the websites you are monitoring are up when starting StatusOK",
+				OtherInfo: "Trying again in 1 minute"})
+			time.Sleep(60 * time.Second)
+		}
+	}
+
 	//Initialize and start monitoring all the apis
-	requests.RequestsInit(reqs, config.Concurrency)
 	requests.StartMonitoring()
 
 	database.EnableLogging(logFileName)

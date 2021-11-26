@@ -80,7 +80,7 @@ func (requestConfig *RequestConfig) Validate() error {
 }
 
 //Initialize data from config file and check all requests
-func RequestsInit(data []RequestConfig, concurrency int) {
+func RequestsInit(data []RequestConfig, concurrency int) (bool, RequestConfig) {
 	RequestsList = data
 
 	//throttle channel is used to limit number of requests performed at a time
@@ -114,11 +114,15 @@ func RequestsInit(data []RequestConfig, concurrency int) {
 			println("Type :", requestConfig.RequestType)
 			println("Error Reason :", reqErr.Error())
 			println("\nPlease check the config file and try again")
-			os.Exit(3)
+
+			// TODO: notify, sleep and retry
+			return false, requestConfig
+			// os.Exit(3)
 		}
 	}
 
-	println("All requests Successfull")
+	println("All requests have succeeded")
+	return true, RequestConfig{}
 }
 
 //Start monitoring by calling createTicker method for each request
