@@ -113,9 +113,7 @@ func RequestsInit(data []RequestConfig, concurrency int) (bool, RequestConfig) {
 			println("Url :", requestConfig.Url)
 			println("Type :", requestConfig.RequestType)
 			println("Error Reason :", reqErr.Error())
-			println("\nPlease check the config file and try again")
 
-			// TODO: notify, sleep and retry
 			return false, requestConfig
 			// os.Exit(3)
 		}

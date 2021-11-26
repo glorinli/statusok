@@ -109,12 +109,13 @@ func startMonitoring(configFileName string, logFileName string) {
 		if initSuccess {
 			break
 		} else {
-			notify.SendErrorNotification(notify.ErrorNotification{
-				Url: requestConfig.Url,
-				RequestType: requestConfig.RequestType,
-				ResponseBody: "Error, one of the given URL could not be reached.",
-				Error: "The website is probably down, make sure all the websites you are monitoring are up when starting StatusOK",
-				OtherInfo: "Trying again in 1 minute"})
+			// notify.SendErrorNotification(notify.ErrorNotification{
+			// 	Url: requestConfig.Url,
+			// 	RequestType: requestConfig.RequestType,
+			// 	ResponseBody: "Error, one of the given URL could not be reached.",
+			// 	Error: "The website is probably down, make sure all the websites you are monitoring are up when starting StatusOK",
+			// 	OtherInfo: "Trying again in 1 minute"})
+			println("\nTrying again in 1 minute, issue reaching to " + requestConfig.Url)
 			time.Sleep(60 * time.Second)
 		}
 	}
