@@ -1,18 +1,19 @@
-# StatusOK
+# 🔭 StatusOK
 
-Monitor your Website and APIs from your computer. Get notified through Slack or E-mail when your server is down or response time is more than expected.
+[![Publish StatusOK image](https://github.com/vemonet/statusok/actions/workflows/publish-docker.yml/badge.svg)](https://github.com/vemonet/statusok/actions/workflows/publish-docker.yml)
 
-## Fork informations
+Monitor your Website and APIs from your computer. Get notified through Slack or e-mail when your server is down, or when the response time is more than expected.
 
-This fork from [sanathp/statusok](https://github.com/sanathp/statusok) brings those changes:
+## About this fork 
+
+This repository is a fork from [sanathp/statusok](https://github.com/sanathp/statusok), it brings those changes:
 
 * Shorter notifications, aiming for better readability in chat channels such as Slack
-* Upgrade from Go 1.11 to 1.17 (add `go.mod`)
+* Improve startup process when one of the website is down (wait and retry, instead of stopping the service)
+* Upgrade from Go 1.11 to 1.17, and add a `go.mod` file with module dependencies
 * Simplify the `Dockerfile` to build from source code (instead of building from a downloaded zip file)
 * Add `docker-compose.yml` file to easily deploy the stack
 * Add a GitHub Actions workflow to publish an image to [`ghcr.io/vemonet/statusok`](https://github.com/vemonet/statusok/pkgs/container/statusok)
-
-[![Publish StatusOK image](https://github.com/vemonet/statusok/actions/workflows/publish-docker.yml/badge.svg)](https://github.com/vemonet/statusok/actions/workflows/publish-docker.yml)
 
 ## Simple Version
 
