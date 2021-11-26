@@ -16,7 +16,7 @@ This fork from [sanathp/statusok](https://github.com/sanathp/statusok) brings th
 
 ## Simple Version
 
-Simple Setup to monitor your website and recieve a notification to your Gmail when your website is down.
+Simple Setup to monitor your website and receive a notification to your Gmail when your website is down.
 
 Step 1: Write a `config.json` with the url information 
 ```json

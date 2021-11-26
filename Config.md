@@ -189,7 +189,7 @@ To receive notifications to any Dingding add below block to your config file wit
 
 ### Write Your own Notification Client
 
-If you want to recieve Notifications to any other clients. Write a struct with below methods and add the Struct to NotificationTypes in [notify.go](https://github.com/sanathp/statusok/blob/master/notify/notify.go) file.
+If you want to receive Notifications to any other clients. Write a struct with below methods and add the Struct to NotificationTypes in [notify.go](https://github.com/sanathp/statusok/blob/master/notify/notify.go) file.
 
 ```
 GetClientName() string
