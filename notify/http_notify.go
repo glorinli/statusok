@@ -22,6 +22,7 @@ type HttpNotify struct {
 	Url         string            `json:"url"`
 	RequestType string            `json:"requestType"`
 	Headers     map[string]string `json:"headers"`
+	MessageKey  string            `json:"messageKey"`
 }
 
 type MessageParam struct {
@@ -44,7 +45,7 @@ func (httpNotify HttpNotify) SendResponseTimeNotification(responseTimeNotificati
 
 	if httpNotify.Headers[ContentType] == JsonContentType {
 
-		jsonBody, jsonErr := GetJsonParamsBody(msgParam)
+		jsonBody, jsonErr := GetJsonParamsBody(msgParam, httpNotify.MessageKey)
 		if jsonErr != nil {
 			return jsonErr
 		}
@@ -100,7 +101,7 @@ func (httpNotify HttpNotify) SendErrorNotification(errorNotification ErrorNotifi
 
 	if httpNotify.Headers[ContentType] == JsonContentType {
 
-		jsonBody, jsonErr := GetJsonParamsBody(msgParam)
+		jsonBody, jsonErr := GetJsonParamsBody(msgParam, httpNotify.MessageKey)
 		if jsonErr != nil {
 			return jsonErr
 		}
@@ -161,17 +162,22 @@ func GetUrlValues(msgParam MessageParam) url.Values {
 	return urlParams
 }
 
-func GetJsonParamsBody(msgParam MessageParam) (io.Reader, error) {
-
+func GetJsonParamsBody(msgParam MessageParam, key string) (io.Reader, error) {
+	if key != "" {
+        // Only marshal a JSON in `{key: msgParam.Message}` if key is not empty.
+        data, jsonErr := json.Marshal(map[string]string{key: msgParam.Message})
+        if jsonErr != nil {
+            jsonErr = errors.New("Invalid Parameters for Content-Type application/json : " + jsonErr.Error())
+            return nil, jsonErr
+        }
+        return bytes.NewBuffer(data), nil
+    }
+	
 	data, jsonErr := json.Marshal(msgParam)
-
 	if jsonErr != nil {
-
 		jsonErr = errors.New("Invalid Parameters for Content-Type application/json : " + jsonErr.Error())
-
 		return nil, jsonErr
 	}
-
 	return bytes.NewBuffer(data), nil
 }
 
